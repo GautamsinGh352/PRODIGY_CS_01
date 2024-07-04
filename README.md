@@ -1,38 +1,19 @@
 # PRODIGY_CS_01
 #Python program that can encrypt and decrypt text using the Caesar Cipher algorithm. Allow users to input a message and a shift value to perform encryption and decryption.
-def caesar_cipher_encrypt(text, shift):
-    encrypted_text = ""
-    for char in text:
-        if char.isalpha():
-            shift_amount = shift % 26
-            if char.islower():
-                encrypted_char = chr((ord(char) - ord('a') + shift_amount) % 26 + ord('a'))
-            elif char.isupper():
-                encrypted_char = chr((ord(char) - ord('A') + shift_amount) % 26 + ord('A'))
-            encrypted_text += encrypted_char
-        else:
-            encrypted_text += char
-    return encrypted_text
+How the Program Works:
 
-def caesar_cipher_decrypt(text, shift):
-    return caesar_cipher_encrypt(text, -shift)
+    caesar_cipher_encrypt(text, shift):
+        This function takes a string text and an integer shift as input.
+        It iterates through each character in the string. If the character is a letter, it shifts it by the specified amount. The shift wraps around the alphabet if necessary.
+        Non-letter characters are added to the result without change.
 
-def main():
-    print("Caesar Cipher Program")
-    choice = input("Do you want to (e)ncrypt or (d)ecrypt? ").lower()
-    if choice not in ['e', 'd']:
-        print("Invalid choice. Please choose 'e' for encryption or 'd' for decryption.")
-        return
-    
-    text = input("Enter the text: ")
-    shift = int(input("Enter the shift value: "))
-    
-    if choice == 'e':
-        encrypted_text = caesar_cipher_encrypt(text, shift)
-        print(f"Encrypted text: {encrypted_text}")
-    else:
-        decrypted_text = caesar_cipher_decrypt(text, shift)
-        print(f"Decrypted text: {decrypted_text}")
+    caesar_cipher_decrypt(text, shift):
+        This function simply calls caesar_cipher_encrypt with the negative shift value to reverse the encryption.
 
-if __name__ == "__main__":
-    main()
+    main():
+        This function serves as the user interface.
+        It prompts the user to choose whether to encrypt or decrypt a message.
+        It then asks for the text and the shift value.
+        Depending on the choice, it calls the appropriate function and prints the result.
+
+To run the program, simply copy the code into a Python environment and execute it. You will be prompted to input whether you want to encrypt or decrypt, followed by the text and the shift value. The program will then output the encrypted or decrypted text accordingly.
